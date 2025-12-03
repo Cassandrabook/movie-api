@@ -23,20 +23,23 @@
 </head>
 
 <body>
-<header>
-  <h1>Filmapp med OMDb</h1>
-  <p class="subtitle">Utforska populära filmer, sök och filtrera efter det du vill se.</p>
 
-  <div class="search-bar">
-    <input
-      id="searchInput"
-      type="text"
-      placeholder="Sök efter film, till exempel Inception, Batman..."
-    />
-    <button id="searchButton">Sök</button>
-    <button id="resetButton">Visa toppfilmer igen</button>
-  </div>
-</header>
+  <header>
+    <h1>Filmapp med OMDb</h1>
+    <p class="subtitle">Utforska populära filmer, sök och filtrera efter det du vill se.</p>
+  <!-- Sökfält för att söka fritt efter filmer -->
+    <div class="search-bar">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Sök efter film, till exempel Inception, Batman..."
+      />
+      <!-- Knapp för att söka efter filmer -->
+      <button id="searchButton">Sök</button>
+      <!-- Knapp för att komma tillbaka till topp filmer -->
+      <button id="resetButton">Visa toppfilmer igen</button>
+    </div>
+  </header>
 
 <main>
   <div class="filters">
@@ -52,12 +55,6 @@
   </div>
 
   <p class="status" id="statusText"></p>
-
-  <div class="pagination" id="pagination">
-    <button id="prevPageBtn">Föregående</button>
-    <p id="pageInfo"></p>
-    <button id="nextPageBtn">Nästa</button>
-  </div>
 
   <div class="grid" id="movieGrid"></div>
 </main>
@@ -87,7 +84,6 @@
         </div>
 
         <div class="modal-section">
-          <h3>Betyg</h3>
           <div id="modalRatings" class="modal-ratings"></div>
         </div>
       </div>
@@ -95,6 +91,7 @@
   </div>
 </div>
 
+<script src="js/config.js"></script>
 <script src="js/app.js"></script>
 
 </body>

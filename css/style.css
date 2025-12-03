@@ -97,25 +97,6 @@ select {
   color: #9ca3af;
 }
 
-/* Pagination */
-
-.pagination {
-  display: none;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.pagination p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #e5e7eb;
-}
-
-.pagination button[disabled] {
-  opacity: 0.5;
-  cursor: default;
-}
 
 /* Grid / filmkort */
 
