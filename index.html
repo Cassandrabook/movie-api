@@ -1,99 +1,107 @@
 <!doctype html>
 <html class="no-js" lang="">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-  <link rel="stylesheet" href="css/style.css">
-  <meta name="description" content="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="">
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-  <meta property="og:image:alt" content="">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <meta property="og:image:alt" content="">
 
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="icon.png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
 
-  <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#fafafa">
-</head>
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#fafafa">
+  </head>
 
-<body>
+  <body>
 
-  <header>
-    <h1>Filmapp med OMDb</h1>
-    <p class="subtitle">Utforska populära filmer, sök och filtrera efter det du vill se.</p>
-  <!-- Sökfält för att söka fritt efter filmer -->
-    <div class="search-bar">
-      <input
-        id="searchInput"
-        type="text"
-        placeholder="Sök efter film, till exempel Inception, Batman..."
-      />
-      <!-- Knapp för att söka efter filmer -->
-      <button id="searchButton">Sök</button>
-      <!-- Knapp för att komma tillbaka till topp filmer -->
-      <button id="resetButton">Visa toppfilmer igen</button>
-    </div>
-  </header>
+    <header>
+      <h1>Filmapp med OMDb</h1>
+      <p class="subtitle">Utforska populära filmer, sök och filtrera efter det du vill se.</p>
 
-<main>
-  <div class="filters">
-    <select id="genreFilter">
-      <option value="">Alla genrer</option>
-    </select>
-    <select id="directorFilter">
-      <option value="">Alla regissörer</option>
-    </select>
-    <select id="yearFilter">
-      <option value="">Alla år</option>
-    </select>
-  </div>
+      <!-- Sökfältet där användaren kan skriva in ett filmtitel eller sökord -->
+      <div class="search-bar">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Sök efter film, till exempel Inception, Batman..."
+        />
+        <!-- Knapp för att starta en sökning -->
+        <button id="searchButton">Sök</button>
+        <!-- Knapp för att återställa sökningen och visa toppfilmerna igen -->
+        <button id="resetButton">Visa toppfilmer igen</button>
+      </div>
+    </header>
 
-  <p class="status" id="statusText"></p>
+    <main>
+      <!-- Filtersektion där användaren kan filtrera filmer efter genre, regissör och år -->
+      <div class="filters">
+        <select id="genreFilter">
+          <option value="">Alla genrer</option>
+        </select>
+        <select id="directorFilter">
+          <option value="">Alla regissörer</option>
+        </select>
+        <select id="yearFilter">
+          <option value="">Alla år</option>
+        </select>
+      </div>
+      <!-- Statusmeddelande som visar vad som händer -->
+      <p class="status" id="statusText"></p>
+      <!-- Här visas alla filmkort som skapas med JavaScript -->
+      <div class="grid" id="movieGrid"></div>
+    </main>
 
-  <div class="grid" id="movieGrid"></div>
-</main>
-
-<!-- Modal -->
-<div class="modal-backdrop" id="modalBackdrop">
-  <div class="modal">
-    <div class="modal-header">
-      <h2 class="modal-title" id="modalTitle"></h2>
-      <button class="close-btn" id="closeModalBtn">&times;</button>
-    </div>
-
-    <div class="modal-body">
-      <img id="modalPoster" alt="Poster" />
-
-      <div class="modal-content">
-        <div id="modalTags" class="modal-tags"></div>
-
-        <div class="modal-section">
-          <h3>Beskrivning</h3>
-          <p id="modalPlot"></p>
+    <!-- Modal (pop-up) som visar mer information när användaren klickar på en film -->
+    <div class="modal-backdrop" id="modalBackdrop">
+      <div class="modal">
+        <div class="modal-header">
+          <!-- Titel på filmen -->
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <!-- Knapp för att stänga modalen -->
+          <button class="close-btn" id="closeModalBtn">&times;</button>
         </div>
 
-        <div class="modal-section">
-          <h3>Information</h3>
-          <div id="modalInfo" class="modal-info"></div>
-        </div>
+        <div class="modal-body">
+          <!-- Filmens poster-bild -->
+          <img id="modalPoster" alt="Poster" />
 
-        <div class="modal-section">
-          <div id="modalRatings" class="modal-ratings"></div>
+          <div class="modal-content">
+            <!-- Visar filmens genrer som taggar -->
+            <div id="modalTags" class="modal-tags"></div>
+            <!-- Sektion för filmens beskrivning -->
+            <div class="modal-section">
+              <h3>Beskrivning</h3>
+              <p id="modalPlot"></p>
+            </div>
+            <!-- Sektion för detaljerad film-information, exempel regissör, skådespelare osv -->
+            <div class="modal-section">
+              <h3>Information</h3>
+              <div id="modalInfo" class="modal-info"></div>
+            </div>
+            <!-- Sektion som visar filmens betyg -->
+            <div class="modal-section">
+              <div id="modalRatings" class="modal-ratings"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<script src="js/config.js"></script>
-<script src="js/app.js"></script>
+    <!-- Laddar in mina JavaScript-filer.
+    config.js innehåller API-nyckeln och app.js innehåller all logik för sidan -->
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
 
-</body>
+  </body>
 
 </html>
