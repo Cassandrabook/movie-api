@@ -38,7 +38,8 @@ const TOP_MOVIE_IDS = [
   "tt0060196",
   "tt0076759",
   "tt0103064",
-  "tt0082971"
+  "tt0082971",
+  "tt0114709"
 ];
 
 // Sätter variabler och hämtar de HTML-element jag behöver jobba med i JavaScript
@@ -312,7 +313,7 @@ function renderFilters() {
   // Bygger upp år-listan
   yearFilter.innerHTML = '<option value="">Alla år</option>';
   Array.from(years)
-    .sort()
+    .sort((a, b) => b - a)
     .forEach(y => {
       const opt = document.createElement("option");
       opt.value = y;
