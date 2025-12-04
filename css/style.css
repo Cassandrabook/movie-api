@@ -61,7 +61,8 @@ button {
 }
 
 button:hover {
-  filter: brightness(1.1);
+  background: #5ea1f4;
+  transition: ease-in-out 0.3s;
 }
 
 main {
