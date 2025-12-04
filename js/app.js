@@ -109,7 +109,7 @@ async function loadTopMovies() {
     });
 
     // Text för att visa hur många toppfilmer som går att kolla på
-    statusText.textContent = `Visar ${allMovies.length} populära filmer.`;
+    statusText.textContent = `Visar de ${allMovies.length} mest populära filmer`;
 
     // Bygger upp filtrens alternativ (genre, regissör, år) baserat på de hämtade filmerna
     renderFilters();
@@ -174,7 +174,7 @@ async function searchMovies() {
     });
 
     // Visar hur många filmer som hittades för sökordet
-    statusText.textContent = `Visar ${allMovies.length} träffar för "${query}".`;
+    statusText.textContent = `Visar ${allMovies.length} träffar för "${query}"`;
 
     // Uppdaterar filter-menyerna utifrån sökresultatet
     renderFilters();
@@ -198,12 +198,11 @@ function renderMovies() {
   const year = yearFilter.value;
 
   // Filtrerar filmerna på genre, regissör och år beroende på vad användaren valt i dropdown-menyerna
-  filteredMovies = allMovies.filter(movie => {
-    if (genre && (!movie.Genre || !movie.Genre.includes(genre))) return false;
-    if (director && movie.Director !== director) return false;
-    if (year && movie.Year !== year) return false;
-    return true;
-  });
+  filteredMovies = allMovies.filter(movie =>
+    (!genre || (movie.Genre && movie.Genre.includes(genre))) &&
+    (!director || movie.Director === director) &&
+    (!year || movie.Year === year)
+  );
 
   // totalMovies håller koll på hur många filmer som finns kvar efter filtrering
   const totalMovies = filteredMovies.length;
