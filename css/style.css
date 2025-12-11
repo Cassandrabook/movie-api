@@ -4,6 +4,8 @@ body {
   padding: 0;
   background: #020617;
   color: #e5e7eb;
+  font-family: "Nunito", sans-serif;
+
 }
 
 header {
@@ -14,7 +16,8 @@ header {
 
 .title{
   text-decoration: none;
-  color: #eeeef1;
+  color: #3b82f6;
+  font-size: 50px;
 }
 
 h1 {
@@ -31,7 +34,7 @@ h1 {
 .search-bar {
   display: flex;
   gap: 0.5rem;
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
   flex-wrap: wrap;
 }
 
